@@ -44,7 +44,8 @@
   * literally anything else.
   Returns the `window`."
   [window content]
-  (if (window? window)
+  (if
+    (window? window)
     (let [browser (:browser window)
           url (try (.toURL (URI/create (str content))) (catch Exception _ nil))
           html (try (html content) (catch Exception _ nil))]
@@ -58,14 +59,16 @@
           java.lang.String (.setText browser content)
           clojure.lang.PersistentVector (.setText browser (html content))
           java.io.File (.setPage browser (.toURL content))
-          (.setText browser (str content))))
-      window)))
+          (.setText browser (str content))))))
+  window)
 
 (defn set-content-markdown
   "Set the content of this `window` to the markdown read from this `filename`.
   Return the `window`."
   [window filename]
-  (set-content window (md/md-to-html-string (slurp filename)))
+  (if
+    (window? window)
+    (set-content window (md/md-to-html-string (slurp filename))))
   window)
 
 (defn set-visible
@@ -86,6 +89,4 @@
   discussed above."
   [title content]
   (set-visible (set-content (create-window title) content)))
-
-
 
