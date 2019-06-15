@@ -1,3 +1,3 @@
 # Introduction to swingbox-clj
 
-TODO: write [great documentation](http://jacobian.org/writing/what-to-write/)
+At this stage, a static HTML display of data from a Clojure session. An actually working browser might come later, but no promises.

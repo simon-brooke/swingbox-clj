@@ -26,5 +26,5 @@ This is simple and within limitations works. The browser isn't live (at least no
 
 Copyright © 2019 FIXME
 
-Distributed under the GNU Lesser General Public Licence 3.0 or (at
+Distributed under the [GNU Lesser General Public Licence 3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html) or (at
 your option) any later version, following the license of SwingBox.
