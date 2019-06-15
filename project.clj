@@ -1,4 +1,4 @@
-(defproject swingbox-clj "0.1.0"
+(defproject swingbox-clj "0.1.1-SNAPSHOT"
   :description "A Clojure library designed to allow opening HTML windows from Clojure."
   :url "http://example.com/FIXME"
   :license {:name "GNU Lesser General Public Licence 3.0"
