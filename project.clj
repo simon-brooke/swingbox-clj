@@ -1,4 +1,4 @@
-(defproject swingbox-clj "0.1.0-SNAPSHOT"
+(defproject swingbox-clj "0.1.0"
   :description "A Clojure library designed to allow opening HTML windows from Clojure."
   :url "http://example.com/FIXME"
   :license {:name "GNU Lesser General Public Licence 3.0"
@@ -10,14 +10,15 @@
   :plugins [[lein-codox "0.10.3"]
             [lein-kibit "0.1.6"]
             [lein-release "1.0.5"]]
-  :release-tasks [["vcs" "assert-committed"]
-                  ["change" "version" "leiningen.release/bump-version" "release"]
-                  ["vcs" "commit"]
-                  ["clean"]
-                  ["test"]
-                  ["codox"]
-                  ["jar"]
-;;                  ["deploy" "clojars"]
-                  ["change" "version" "leiningen.release/bump-version"]
-                  ["vcs" "commit"]]
+;; lein-release not yet working on this.
+;;   :release-tasks [["vcs" "assert-committed"]
+;;                   ["change" "version" "leiningen.release/bump-version" "release"]
+;;                   ["vcs" "commit"]
+;;                   ["clean"]
+;;                   ["test"]
+;;                   ["codox"]
+;;                   ["jar"]
+;; ;;                  ["deploy" "clojars"]
+;;                   ["change" "version" "leiningen.release/bump-version"]
+;;                   ["vcs" "commit"]]
   )
