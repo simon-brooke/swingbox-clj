@@ -3,6 +3,8 @@
            java.io.File
            java.net.URI
            javax.swing.JFrame
+           javax.swing.JScrollPane
+           javax.swing.ScrollPaneConstants
            org.fit.cssbox.swingbox.BrowserPane)
   (:require [hiccup.core :refer [html]]
              [markdown.core :as md]
@@ -26,14 +28,37 @@
   ([] (create-window nil))
   ([title]
    (let [frame (JFrame. (if title (str title) "Untitled Window"))
-         browser (BrowserPane.)]
+         browser (BrowserPane.)
+         scroller (JScrollPane.
+                    browser
+                    javax.swing.ScrollPaneConstants/VERTICAL_SCROLLBAR_AS_NEEDED
+                    javax.swing.ScrollPaneConstants/HORIZONTAL_SCROLLBAR_AS_NEEDED)]
      (.setText browser "") ;; window won't open if content is not added to the
                            ;; browser before the browser is added to the frame.
                            ;; you can change the content later.
-     (.add frame browser)
+     (.add frame scroller)
      (.pack frame)
      {:frame frame
       :browser browser})))
+
+;; private JPanel createXPathQueryPanel() {
+;;   JPanel p = new JPanel();
+;;   p.setLayout(new BorderLayout());
+;;   xpathQueryArea.setBorder(BorderFactory.createLineBorder(Color.black));
+;;   makeTextComponentUndoable(xpathQueryArea);
+;;   JScrollPane scrollPane = new JScrollPane(xpathQueryArea);
+;;   scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+;;   scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+;;   final JButton b = createGoButton();
+;;   JPanel topPanel = new JPanel();
+;;   topPanel.setLayout(new BorderLayout());
+;;   topPanel.add(new JLabel("XPath Query (if any):"), BorderLayout.WEST);
+;;   topPanel.add(createXPathVersionPanel(), BorderLayout.EAST);
+;;   p.add(topPanel, BorderLayout.NORTH);
+;;   p.add(scrollPane, BorderLayout.CENTER);
+;;   p.add(b, BorderLayout.SOUTH);
+;;   return p;
+;; }
 
 (defn set-content
   "Set the content of the browser in this `window` to this `content,` which may
